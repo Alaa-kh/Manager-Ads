@@ -18,7 +18,8 @@ class AppIcons {
   static const String ageIcon = 'assets/svg/age.svg';
   static const String lineIcon = 'assets/svg/Line 1.svg';
   static const String messageIcon = 'assets/svg/message.svg';
-
+  static const String emailIcon = 'assets/icons/email.png';
+  
   // Home
   static const String driversIcon = 'assets/svg/drivers.svg';
   static const String requestsIcon = 'assets/svg/requests.svg';
