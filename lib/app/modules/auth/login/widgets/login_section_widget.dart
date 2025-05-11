@@ -1,0 +1,49 @@
+import 'package:manager_ads/app/core/constants/app_packages.dart';
+
+class LoginSectionWidget extends StatelessWidget {
+  const LoginSectionWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          color: AppColors.whiteColor,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(40),
+            topRight: Radius.circular(40),
+          ),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const CustomVerticalSizedBox(height: 30),
+              LoginTextWidget(),
+              const CustomVerticalSizedBox(height: 25),
+              CustomTextField(
+                suffixIcon: SvgPicture.asset(AppIcons.phoneIcon),
+                hintText: 'رقم الموبايل',
+              ),
+              const CustomVerticalSizedBox(height: 18),
+              CustomTextField(
+                suffixIcon: SvgPicture.asset(AppIcons.passwordIcon),
+                hintText: 'كلمة السر',
+              ),
+              const CustomVerticalSizedBox(height: 11),
+              LoginRememberWidget(),
+              const CustomVerticalSizedBox(height: 30),
+              CustomButtonWidget(
+                text: 'تسجيل الدخول',
+                onTap: () {
+                  Get.to(() => HomeScreen());
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
