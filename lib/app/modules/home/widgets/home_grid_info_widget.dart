@@ -35,25 +35,17 @@ class HomeGridInfoWidget extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SvgPicture.asset(
-                      index == 0
-                          ? AppIcons.driversIcon
-                          : index == 1
-                          ? AppIcons.requestsIcon
-                          : index == 2
-                          ? AppIcons.companiesIcon
-                          : AppIcons.campaignsIcon,
-                    ),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           index == 0
-                              ? 'عدد السائقين'
+                              ? 'Number of drivers'
                               : index == 1
-                              ? 'عدد الطلبات'
+                              ? 'Number of requests'
                               : index == 2
-                              ? 'عدد الشركات'
-                              : 'عدد الحملات',
+                              ? 'Number of companies'
+                              : 'Number of campaigns',
                           style: AppTextTheme.textTheme.displayMedium!.copyWith(
                             fontSize: 12,
                           ),
@@ -65,6 +57,15 @@ class HomeGridInfoWidget extends StatelessWidget {
                           ),
                         ),
                       ],
+                    ),
+                    SvgPicture.asset(
+                      index == 0
+                          ? AppIcons.driversIcon
+                          : index == 1
+                          ? AppIcons.requestsIcon
+                          : index == 2
+                          ? AppIcons.companiesIcon
+                          : AppIcons.campaignsIcon,
                     ),
                   ],
                 ),
@@ -84,7 +85,7 @@ class HomeGridInfoWidget extends StatelessWidget {
                             ),
                           ),
                           TextSpan(
-                            text: 'أعلى من الأسبوع الماضي ',
+                            text: 'Higher than last week ',
                             style: AppTextTheme.textTheme.labelLarge!.copyWith(
                               fontSize: 10,
                               color: AppColors.blackColor,

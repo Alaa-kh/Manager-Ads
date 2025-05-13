@@ -6,7 +6,7 @@ AppBar addCampaignAppBar() {
     scrolledUnderElevation: 0,
     backgroundColor: AppColors.whiteColor,
     title: Text(
-      'اضافة حملة اعلانية',
+     'Add an advertising campaign',
       style: AppTextTheme.textTheme.bodyMedium!.copyWith(fontSize: 16),
     ),
     centerTitle: true,

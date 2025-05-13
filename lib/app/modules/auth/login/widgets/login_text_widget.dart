@@ -24,7 +24,7 @@ class LoginTextWidget extends StatelessWidget {
           border: Border.all(color: AppColors.yellowColor, width: 1),
         ),
         child: Text(
-          'تسجيل الدخول',
+          'Login',
           style: AppTextTheme.textTheme.bodyMedium!.copyWith(
             fontWeight: FontWeight.w400,
             color: AppColors.yellowColor,

@@ -1,16 +1,16 @@
 import 'package:manager_ads/app/core/constants/app_packages.dart';
-
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
-     this.prefixIcon,
+    this.prefixIcon,
     this.suffixIcon,
     this.controller,
     this.validator,
     this.hintText,
     this.obscureText,
-    this.textInputType
+    this.textInputType,
   });
+
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final TextEditingController? controller;
@@ -18,6 +18,7 @@ class CustomTextField extends StatelessWidget {
   final bool? obscureText;
   final String? hintText;
   final TextInputType? textInputType;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -34,38 +35,40 @@ class CustomTextField extends StatelessWidget {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(
-            color: AppColors.lightDarkColor,
-          ),
+          borderSide: BorderSide(color: AppColors.lightDarkColor),
         ),
         hintText: hintText,
         hintStyle: AppTextTheme.textTheme.bodyMedium!.copyWith(
           color: AppColors.darkColor,
         ),
-        hintTextDirection: TextDirection.rtl,
-        contentPadding: const EdgeInsets.symmetric(vertical: 14.0),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(
-            color: AppColors.lightDarkColor,
-          ),
+          borderSide: BorderSide(color: AppColors.lightDarkColor),
         ),
         filled: true,
         fillColor: AppColors.whiteColor,
-        prefixIcon: Padding(
-          padding: const EdgeInsets.all(14.0),
-          child: prefixIcon,
+  
+        prefixIcon: prefixIcon != null
+            ? Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: prefixIcon,
+              )
+            : null,
+        prefixIconConstraints: const BoxConstraints(
+          minWidth: 48,
+          minHeight: 48,
         ),
-        suffixIcon:
-            suffixIcon != null
-                ? Padding(
-                  padding: const EdgeInsets.all(14.0),
-                  child: suffixIcon!,
-                )
-                : null,
-        // labelStyle: const TextStyle(color: AppColors.whiteColor),
+    
+        suffixIcon: Padding(
+          padding: const EdgeInsets.all(14.0),
+          child: suffixIcon ?? const SizedBox(width: 24),
+        ),
+        suffixIconConstraints: const BoxConstraints(
+          minWidth: 48,
+          minHeight: 48,
+        ),
       ),
-      // style: const TextStyle(color: AppColors.whiteColor),
     );
   }
 }

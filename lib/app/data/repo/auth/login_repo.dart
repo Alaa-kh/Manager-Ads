@@ -1,21 +1,29 @@
 
-
 import 'package:manager_ads/app/core/constants/app_api.dart';
 import 'package:manager_ads/app/data/helper/failures_handling.dart';
-import 'package:manager_ads/app/data/models/auth/forgot_password_model.dart';
+import 'package:manager_ads/app/data/models/auth/login_model.dart';
 import 'package:manager_ads/app/data/network/crud.dart';
 
-abstract class ForgotPasswordRepository {
-  Future forgotPassword({required String email});
+abstract class LoginRepository {
+  Future login({
+    required String name,
+    required String password,
+  });
 }
 
-class ForgotPasswordRepositoryImpl extends ForgotPasswordRepository {
+class LoginRepositoryImpl extends LoginRepository {
   @override
-  Future forgotPassword({required String email}) async {
+  Future login({
+    required String name,
+    required String password,
+  }) async {
     return _postData(
-      url: AppApi.forgotPassword,
-      fromJson: (json) => ForgotPasswordModel.fromJson(json),
-      body: {'email': email},
+      url: AppApi.login,
+      fromJson: (json) => LoginModel.fromJson(json),
+      body: {
+        'username': name,
+        'password': password,
+      },
     );
   }
 

@@ -14,13 +14,13 @@ class HomeScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomVerticalSizedBox(height: 25),
               HomeGridInfoWidget(),
               CustomVerticalSizedBox(height: 40),
               Text(
-                ': تفاصيل الربح',
+            'Profit Details :',
                 style: AppTextTheme.textTheme.displayMedium!.copyWith(
                   fontSize: 18,
                 ),

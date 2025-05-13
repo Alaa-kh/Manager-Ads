@@ -19,6 +19,8 @@ class AppIcons {
   static const String lineIcon = 'assets/svg/Line 1.svg';
   static const String messageIcon = 'assets/svg/message.svg';
   static const String emailIcon = 'assets/icons/email.png';
+  static const String eyeIcon = 'assets/svg/eye.svg';
+  static const String eyeVisibilityIcon = 'assets/svg/eye_visibility.svg';
   
   // Home
   static const String driversIcon = 'assets/svg/drivers.svg';

@@ -1,38 +1,59 @@
 import 'package:manager_ads/app/core/constants/app_packages.dart';
+import 'package:manager_ads/app/modules/auth/forgot_password/views/forgot_password_screen.dart';
+import 'package:manager_ads/app/modules/auth/login/controllers/login_controller.dart';
 
 class LoginRememberWidget extends StatelessWidget {
   const LoginRememberWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerRight,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            'تذكرني',
-            style: AppTextTheme.textTheme.labelLarge!.copyWith(
-              fontWeight: FontWeight.w600,
-              color: AppColors.darkColor,
-            ),
-          ),
-          const CustomHorizontalSizedBox(width: 4),
+    return GetBuilder<LoginControllerImp>(
+      builder: (controller) {
+        return Align(
+          alignment: Alignment.centerRight,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Remember me',
+                style: AppTextTheme.textTheme.labelLarge!.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.darkColor,
+                ),
+              ),
+              const CustomHorizontalSizedBox(width: 4),
 
-          Checkbox(
-            value: false,
-            side: const BorderSide(color: AppColors.yellowColor),
-            hoverColor: AppColors.yellowColor,
-            activeColor: AppColors.yellowColor,
-            focusColor: AppColors.yellowColor,
-            fillColor: WidgetStateProperty.all(AppColors.whiteColor),
-            visualDensity: VisualDensity(horizontal: -4, vertical: -4),
-            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            onChanged: (bool? value) {},
+              Checkbox(
+                side: const BorderSide(color: AppColors.yellowColor),
+                hoverColor: AppColors.yellowColor,
+                activeColor: AppColors.yellowColor,
+                focusColor: AppColors.yellowColor,
+                value: controller.isChecked,
+                onChanged: (bool? value) {
+                  controller.checked(value!);
+                },
+              ),
+              const Spacer(),
+              InkWell(
+                onTap: () {
+                  Get.to(
+                    () => ForgotPasswordScreen(),
+                    transition: Transition.cupertinoDialog,
+                    duration: Duration(seconds: 1),
+                  );
+                },
+                child: Text(
+                  'Forget Password?',
+                  style: AppTextTheme.textTheme.labelLarge!.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.yellowColor,
+                  ),
+                ),
+              ),
+            ],
           ),
-        
-        ],
-      ),
+        );
+      },
     );
   }
 }

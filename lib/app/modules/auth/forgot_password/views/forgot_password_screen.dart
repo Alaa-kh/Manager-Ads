@@ -1,7 +1,9 @@
 
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:manager_ads/app/core/constants/app_packages.dart';
 import 'package:manager_ads/app/core/validators/forms_validators.dart';
 import 'package:manager_ads/app/modules/auth/forgot_password/controllers/forgot_password_controller.dart';
+import 'package:manager_ads/app/widgets/main_app_bar_widget.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});
@@ -12,31 +14,30 @@ class ForgotPasswordScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
 
-      appBar: AppBar(
-       
-      
+      appBar: mainAppBar(
+        onTap: () => Get.back(),
+        radius: Radius.circular(0),
         backgroundColor: AppColors.whiteColor,
-     leading:  IconButton(
-          onPressed: () => Get.back(),
-       icon: Container(
-            margin: EdgeInsets.only(left: 13),
-            alignment: Alignment.center,
-            width: 44,
-            height: 44,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppColors.whiteColor,
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.lightDarkColor.withValues(alpha: .7),
-                  blurRadius: 10,
-                  spreadRadius: 5,
-                ),
-              ],
-            ),
-            child: Icon(Icons.arrow_back_ios, size: 13),
+        Container(
+          margin: EdgeInsets.only(left: 13),
+          width: 44,
+          height: 44,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: AppColors.lightGrayColor,
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.lightDarkColor.withValues(alpha: 0.7),
+                blurRadius: 10,
+                spreadRadius: 5,
+              ),
+            ],
           ),
-     ),
+          child: Padding(
+            padding: EdgeInsets.only(left: 5),
+            child: Icon(Icons.arrow_back_ios, size: 18),
+          ),
+        ),
       ),
 
       body: SingleChildScrollView(
@@ -73,13 +74,15 @@ class ForgotPasswordScreen extends StatelessWidget {
                         validator:
                             (email) =>
                                 FormsValidate.getEmailValidate(context, email),
+                      ).animate().slideX(
+                        delay: Duration(microseconds: 1200),
+                        duration: Duration(milliseconds: 500),
                       ),
                       CustomVerticalSizedBox(height: 40),
                       CustomButtonWidget(
                         text: 'Reset Password',
                         onTap: () => controller.forgotPassword(),
                       ),
-                    
                     ],
                   ),
                 ),

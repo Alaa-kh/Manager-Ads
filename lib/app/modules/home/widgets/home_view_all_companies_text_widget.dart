@@ -8,10 +8,14 @@ class HomeViewAllCompaniesTextWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        Text(
+          'Companies',
+          style: AppTextTheme.textTheme.displayMedium!.copyWith(fontSize: 18),
+        ),
         InkWell(
           onTap: () {},
           child: Text(
-            'الكل',
+            'All',
             style: AppTextTheme.textTheme.displayMedium!.copyWith(
               fontSize: 14,
               color: AppColors.charcoalGrayColor,
@@ -19,10 +23,7 @@ class HomeViewAllCompaniesTextWidget extends StatelessWidget {
             ),
           ),
         ),
-        Text(
-          'الشركات',
-          style: AppTextTheme.textTheme.displayMedium!.copyWith(fontSize: 18),
-        ),
+    
       ],
     );
   }

@@ -8,8 +8,9 @@ class ManagerAdsApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Inter'),
-      initialRoute: AppRoutes.login,
-      getPages: AppPages.pages,
+      // initialRoute: AppRoutes.login,
+      // getPages: AppPages.pages,
+      home: AddCampaignScreen(),
     );
   }
 }
