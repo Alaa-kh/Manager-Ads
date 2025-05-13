@@ -6,7 +6,7 @@ AppBar homeAppBar() {
     elevation: 0,
     scrolledUnderElevation: 0,
     title: Text(
-      'Home Page',
+      'الصفحة الرئيسية',
       style: AppTextTheme.textTheme.headlineLarge!.copyWith(fontSize: 18),
     ),
     centerTitle: true,

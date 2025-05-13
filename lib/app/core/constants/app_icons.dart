@@ -40,5 +40,11 @@ class AppIcons {
   static const String advertiserIcon = 'assets/icons/Advertiser.png';
   static const String limitIcon = 'assets/icons/limit.png';
   static const String driversCountIcon = 'assets/icons/drivers_count.png';
+  static const String listIcon = 'assets/icons/list.png';
+  static const String numberIcon = 'assets/icons/number.png';
+  static const String locationIcon = 'assets/icons/location.png';
+  static const String timeIcon = 'assets/icons/time.png';
+  static const String centersIcon = 'assets/icons/centers.png';
+  static const String imageIcon = 'assets/icons/image.png';
 
 }

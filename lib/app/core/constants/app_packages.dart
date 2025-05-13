@@ -31,7 +31,6 @@ export 'package:manager_ads/app/modules/campaigns/widgets/campaigns_tab_bar_widg
 export 'package:manager_ads/app/modules/root/views/root_screen.dart';
 export 'package:manager_ads/app/modules/campaigns/widgets/campaigns_up_widget.dart';
 export 'package:manager_ads/app/modules/add_campaign/widgets/add_campaign_appbar.dart';
-export 'package:manager_ads/app/modules/add_campaign/widgets/add_campaign_dropdown_widget.dart';
 export 'package:manager_ads/app/modules/add_campaign/views/add_campaign_screen.dart';
 export 'package:manager_ads/app/modules/home/views/home_screen.dart';
 export 'package:manager_ads/app/modules/root/controllers/root_controller.dart';

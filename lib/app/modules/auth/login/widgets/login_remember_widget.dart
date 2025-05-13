@@ -6,10 +6,19 @@ class LoginRememberWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.centerRight,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
+          Text(
+            'تذكرني',
+            style: AppTextTheme.textTheme.labelLarge!.copyWith(
+              fontWeight: FontWeight.w600,
+              color: AppColors.darkColor,
+            ),
+          ),
+          const CustomHorizontalSizedBox(width: 4),
+
           Checkbox(
             value: false,
             side: const BorderSide(color: AppColors.yellowColor),
@@ -21,14 +30,7 @@ class LoginRememberWidget extends StatelessWidget {
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             onChanged: (bool? value) {},
           ),
-          const CustomHorizontalSizedBox(width: 4),
-          Text(
-            'Remember me',
-            style: AppTextTheme.textTheme.labelLarge!.copyWith(
-              fontWeight: FontWeight.w600,
-              color: AppColors.darkColor,
-            ),
-          ),
+        
         ],
       ),
     );

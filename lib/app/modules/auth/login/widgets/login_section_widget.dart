@@ -1,3 +1,4 @@
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:manager_ads/app/core/constants/app_packages.dart';
 
 class LoginSectionWidget extends StatelessWidget {
@@ -24,13 +25,19 @@ class LoginSectionWidget extends StatelessWidget {
               const CustomVerticalSizedBox(height: 25),
               CustomTextField(
                 suffixIcon: SvgPicture.asset(AppIcons.phoneIcon),
-                hintText: 'رقم الموبايل',
-              ),
+                hintText: 'الاسم الكامل',
+              ).animate().slideX(
+                    delay: Duration(microseconds: 1200),
+                    duration: Duration(milliseconds: 500),
+                  ),
               const CustomVerticalSizedBox(height: 18),
               CustomTextField(
                 suffixIcon: SvgPicture.asset(AppIcons.passwordIcon),
                 hintText: 'كلمة السر',
-              ),
+              ).animate().slideX(
+                    delay: Duration(microseconds: 1000),
+                    duration: Duration(milliseconds: 1000),
+                  ),
               const CustomVerticalSizedBox(height: 11),
               LoginRememberWidget(),
               const CustomVerticalSizedBox(height: 30),
