@@ -22,7 +22,7 @@ class CampaignsScreen extends StatelessWidget {
             ),
           ],
         ),
-        floatingActionButton: InkWell(
+        floatingActionButton: GestureDetector(
      onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(builder: (_) => const AddCampaignScreen()),

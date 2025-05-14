@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:manager_ads/app/core/constants/app_api.dart';
 import 'package:manager_ads/app/data/helper/failures_handling.dart';
@@ -19,7 +18,7 @@ abstract class AddCampaingRepository {
     required String regions,
     required String miniMum,
     required String maxiMum,
-    required List<String> images,
+    // required List<String> images,
   });
 }
 
@@ -38,7 +37,7 @@ class AddCampaingRepositoryImpl extends AddCampaingRepository {
     required String regions,
     required String miniMum,
     required String maxiMum,
-    required List<String> images,
+    // required List<String> images,
   }) async {
     return _postData(
       url: AppApi.addAds,
@@ -54,7 +53,7 @@ class AddCampaingRepositoryImpl extends AddCampaingRepository {
         'duration': duration,
         'regions': regions,
         'centers': centers,
-        'images': jsonEncode(images),
+        // 'images': jsonEncode(images),
       },
     );
   }

@@ -8,7 +8,7 @@ class LoginSectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(LoginControllerImp());
+ Get.put(LoginControllerImp());
     return Expanded(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -23,7 +23,7 @@ class LoginSectionWidget extends StatelessWidget {
         child: SingleChildScrollView(
           child: GetBuilder<LoginControllerImp>(
             builder:
-                (_) => Form(
+                (controller) => Form(
                   key: controller.formKey,
                   child: Column(
                     children: [

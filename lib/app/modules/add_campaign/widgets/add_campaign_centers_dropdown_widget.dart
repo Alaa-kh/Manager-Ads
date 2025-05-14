@@ -1,10 +1,10 @@
 import 'package:manager_ads/app/core/constants/app_packages.dart';
 import 'package:manager_ads/app/modules/add_campaign/controllers/add_campaing_controller.dart';
 
-List<String> centers = ['Homs', 'Aleppo'];
+List<String> centers = [' مركز في الميدان', 'مركز في المزة'];
 
-class AddCampaignDropdownWidget extends StatelessWidget {
-  const AddCampaignDropdownWidget({super.key});
+class AddCampaignCentersDropdownWidget extends StatelessWidget {
+  const AddCampaignCentersDropdownWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,9 @@ class AddCampaignDropdownWidget extends StatelessWidget {
                           DropdownMenuItem(value: value, child: Text(value)),
                     )
                     .toList(),
-            onChanged: (value) {},
+            onChanged: (value) {
+              controller.select(value!, controller.centersController);
+            },
             decoration: InputDecoration(
               prefixIcon: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 14.0),

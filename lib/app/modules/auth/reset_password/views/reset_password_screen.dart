@@ -4,7 +4,6 @@ import 'package:manager_ads/app/core/validators/forms_validators.dart';
 import 'package:manager_ads/app/modules/auth/reset_password/controllers/reset_password_controller.dart';
 import 'package:manager_ads/app/widgets/main_app_bar_widget.dart';
 
-String code = Get.arguments['code'];
 
 class ResetPasswordScreen extends StatelessWidget {
   const ResetPasswordScreen({super.key});
@@ -12,7 +11,7 @@ class ResetPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ResetPasswordControllerImp());
-    final code = Get.arguments['code'];
+    final String code = Get.arguments['code'];
 
     return Scaffold(
       backgroundColor: AppColors.whiteColor,

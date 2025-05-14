@@ -14,15 +14,7 @@ class LoginRememberWidget extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                'Remember me',
-                style: AppTextTheme.textTheme.labelLarge!.copyWith(
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.darkColor,
-                ),
-              ),
-              const CustomHorizontalSizedBox(width: 4),
-
+             
               Checkbox(
                 side: const BorderSide(color: AppColors.yellowColor),
                 hoverColor: AppColors.yellowColor,
@@ -33,6 +25,15 @@ class LoginRememberWidget extends StatelessWidget {
                   controller.checked(value!);
                 },
               ),
+              Text(
+                'Remember me',
+                style: AppTextTheme.textTheme.labelLarge!.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.darkColor,
+                ),
+              ),
+              const CustomHorizontalSizedBox(width: 4),
+
               const Spacer(),
               InkWell(
                 onTap: () {
