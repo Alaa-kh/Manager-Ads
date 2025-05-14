@@ -24,51 +24,53 @@ class RootScreen extends GetView<RootController> {
               items: [
                 BottomNavigationBarItem(
                   icon: Image.asset(
-                    AppIcons.commercialIcon,
-                    width: 70,
+                    width: 35,
+                    AppIcons.homeIcon,
                     colorBlendMode: BlendMode.srcIn,
                     color:
                         controller.currentIndex == 0
                             ? AppColors.yellowColor
                             : AppColors.mediumGrayColor,
                   ),
-                  label: '',
+                  label: 'Home',
                 ),
+
                 BottomNavigationBarItem(
                   icon: Image.asset(
-                    AppIcons.companyIcon,
-                    width: 70,
+                     width: 35,
+                    AppIcons.driverIcon,
                     colorBlendMode: BlendMode.srcIn,
                     color:
                         controller.currentIndex == 1
                             ? AppColors.yellowColor
                             : AppColors.mediumGrayColor,
                   ),
-                  label: '',
+                  label: 'Drivers',
                 ),
+
                 BottomNavigationBarItem(
                   icon: Image.asset(
-                    width: 70,
-                    AppIcons.driverIcon,
+                    AppIcons.companyIcon,
+                    width: 35,
                     colorBlendMode: BlendMode.srcIn,
                     color:
                         controller.currentIndex == 2
                             ? AppColors.yellowColor
                             : AppColors.mediumGrayColor,
                   ),
-                  label: '',
+                  label: 'Companies',
                 ),
                 BottomNavigationBarItem(
                   icon: Image.asset(
-                    width: 70,
-                    AppIcons.homeIcon,
+                    AppIcons.commercialIcon,
+                   width: 35,
                     colorBlendMode: BlendMode.srcIn,
                     color:
                         controller.currentIndex == 3
                             ? AppColors.yellowColor
                             : AppColors.mediumGrayColor,
                   ),
-                  label: '',
+                  label: 'Campaigns',
                 ),
               ],
             ),

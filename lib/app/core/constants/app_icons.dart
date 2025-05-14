@@ -36,6 +36,7 @@ class AppIcons {
   static const String incomingIcon = 'assets/svg/Incoming.svg';
   static const String ellipseIcon = 'assets/svg/Ellipse 14.svg';
   static const String addIcon = 'assets/svg/add.svg';
+  static const String notificationCamIcon = 'assets/svg/Notification_Cam.svg';
 
   // Add Campaigns
   static const String buildingIcon = 'assets/icons/building.png';

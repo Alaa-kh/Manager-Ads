@@ -1,7 +1,9 @@
+import 'package:manager_ads/app/core/constants/app_key.dart' show AppKey;
 import 'package:manager_ads/app/core/constants/app_packages.dart';
 import 'package:manager_ads/app/core/shared/custom_loading.dart';
 import 'package:manager_ads/app/data/models/auth/login_model.dart';
 import 'package:manager_ads/app/data/repo/auth/login_repo.dart';
+import 'package:manager_ads/app/data/services/app_services.dart' show MyServices;
 
 abstract class LoginController extends GetxController {
   Future<void> login();
@@ -16,7 +18,7 @@ class LoginControllerImp extends LoginController
   final TextEditingController passwordController = TextEditingController();
 
   final LoginRepositoryImpl loginRepository = LoginRepositoryImpl();
-  // final _box = Get.find<MyServices>().getBox;
+  final _box = Get.find<MyServices>().getBox;
 
   @override
   Future<void> login() async {
@@ -31,7 +33,7 @@ class LoginControllerImp extends LoginController
         password: passwordController.text.trim(),
       );
       if (login is LoginModel) {
-        // _storeUserData(login);
+        _storeUserData(login);
         print('================================== SUCCESS $login');
         Get.off(() => const RootScreen());
       } else {
@@ -63,8 +65,9 @@ class LoginControllerImp extends LoginController
     update();
   }
 
-  // void _storeUserData(LoginModel loginModel) {
-  //   _box.write(AppKey.email, loginModel.data.email);
-  //   _box.write(AppKey.name, loginModel.data.username);
-  // }
+  void _storeUserData(LoginModel loginModel) {
+    _box.write(AppKey.email, loginModel.data.email);
+    _box.write(AppKey.name, loginModel.data.username);
+    _box.write(AppKey.token, loginModel.data.token);
+  }
 }
