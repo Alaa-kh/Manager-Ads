@@ -16,29 +16,29 @@ class ResetPasswordScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
       appBar: mainAppBar(
-        onTap: () => Get.back(),
+        // onTap: () => Get.back(),
         radius: Radius.circular(0),
         backgroundColor: AppColors.whiteColor,
-        Container(
-          margin: EdgeInsets.only(left: 13),
-          width: 44,
-          height: 44,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: AppColors.lightGrayColor,
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.lightDarkColor.withValues(alpha: 0.7),
-                blurRadius: 10,
-                spreadRadius: 5,
-              ),
-            ],
-          ),
-          child: Padding(
-            padding: EdgeInsets.only(left: 5),
-            child: Icon(Icons.arrow_back_ios, size: 18),
-          ),
-        ),
+        // Container(
+        //   margin: EdgeInsets.only(left: 13),
+        //   width: 44,
+        //   height: 44,
+        //   decoration: BoxDecoration(
+        //     shape: BoxShape.circle,
+        //     color: AppColors.lightGrayColor,
+        //     boxShadow: [
+        //       BoxShadow(
+        //         color: AppColors.lightDarkColor.withValues(alpha: 0.7),
+        //         blurRadius: 10,
+        //         spreadRadius: 5,
+        //       ),
+        //     ],
+        //   ),
+        //   child: Padding(
+        //     padding: EdgeInsets.only(left: 5),
+        //     child: Icon(Icons.arrow_back_ios, size: 18),
+        //   ),
+        // ),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24),

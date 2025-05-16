@@ -41,7 +41,7 @@ class AddCampaignScreen extends StatelessWidget {
                       (name) => FormsValidate.getEmptyValidate(context, name),
                 ).animate().slideX(
                   delay: Duration(microseconds: 1000),
-                  duration: Duration(milliseconds: 700),
+                  duration: Duration(milliseconds: 600),
                 ),
                 CustomVerticalSizedBox(height: 20),
                 CustomTextField(
@@ -52,7 +52,7 @@ class AddCampaignScreen extends StatelessWidget {
                       (value) => FormsValidate.getEmptyValidate(context, value),
                 ).animate().slideX(
                   delay: Duration(microseconds: 1000),
-                  duration: Duration(milliseconds: 900),
+                  duration: Duration(milliseconds: 700),
                 ),
                 CustomVerticalSizedBox(height: 20),
                 CustomTextField(
@@ -63,7 +63,7 @@ class AddCampaignScreen extends StatelessWidget {
                       (value) => FormsValidate.getEmptyValidate(context, value),
                 ).animate().slideX(
                   delay: Duration(microseconds: 1000),
-                  duration: Duration(milliseconds: 1100),
+                  duration: Duration(milliseconds: 800),
                 ),
                 // CustomVerticalSizedBox(height: 20),
                 // CustomTextField(
@@ -80,13 +80,13 @@ class AddCampaignScreen extends StatelessWidget {
                       (value) => FormsValidate.getEmptyValidate(context, value),
                 ).animate().slideX(
                   delay: Duration(microseconds: 1000),
-                  duration: Duration(milliseconds: 1300),
+                  duration: Duration(milliseconds: 900),
                 ),
                 CustomVerticalSizedBox(height: 20),
 
                 AddCampaignRegionsDropdownWidget().animate().slideX(
                   delay: Duration(microseconds: 1000),
-                  duration: Duration(milliseconds: 1500),
+                  duration: Duration(milliseconds: 1000),
                 ),
 
                 // CustomTextField(
@@ -108,7 +108,7 @@ class AddCampaignScreen extends StatelessWidget {
                       (value) => FormsValidate.getEmptyValidate(context, value),
                 ).animate().slideX(
                   delay: Duration(microseconds: 1000),
-                  duration: Duration(milliseconds: 1700),
+                  duration: Duration(milliseconds: 1100),
                 ),
                 // CustomVerticalSizedBox(height: 20),
                 // CustomTextField(
@@ -130,7 +130,7 @@ class AddCampaignScreen extends StatelessWidget {
                       (value) => FormsValidate.getEmptyValidate(context, value),
                 ).animate().slideX(
                   delay: Duration(microseconds: 1000),
-                  duration: Duration(milliseconds: 1900),
+                  duration: Duration(milliseconds: 1200),
                 ),
                 CustomVerticalSizedBox(height: 20),
                 CustomTextField(
@@ -140,13 +140,13 @@ class AddCampaignScreen extends StatelessWidget {
                       (value) => FormsValidate.getEmptyValidate(context, value),
                 ).animate().slideX(
                   delay: Duration(microseconds: 1000),
-                  duration: Duration(milliseconds: 2300),
+                  duration: Duration(milliseconds: 1300),
                 ),
             
                 CustomVerticalSizedBox(height: 20),
                 AddCampaignCentersDropdownWidget().animate().slideX(
                   delay: Duration(microseconds: 1000),
-                  duration: Duration(milliseconds: 2500),
+                  duration: Duration(milliseconds: 1400),
                 ),
                 CustomVerticalSizedBox(height: 20),
                 Row(
@@ -163,7 +163,7 @@ class AddCampaignScreen extends StatelessWidget {
                       ),
                     ).animate().slideX(
                       delay: Duration(microseconds: 1000),
-                      duration: Duration(milliseconds: 2700),
+                      duration: Duration(milliseconds: 1500),
                     ),
                     CustomHorizontalSizedBox(width: 10),
                     Expanded(
@@ -178,7 +178,7 @@ class AddCampaignScreen extends StatelessWidget {
                       ),
                     ).animate().slideX(
                       delay: Duration(microseconds: 1000),
-                      duration: Duration(milliseconds: 2900),
+                      duration: Duration(milliseconds: 1600),
                     ),
                   ],
                 ),

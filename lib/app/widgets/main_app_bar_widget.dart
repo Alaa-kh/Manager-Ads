@@ -4,7 +4,8 @@
 import 'package:manager_ads/app/core/constants/app_packages.dart';
 
 AppBar mainAppBar(
-  Widget leadingIcon, {
+  {
+  Widget? leadingIcon,
   Radius? radius,
   String? title,
   List<Widget>? actions,

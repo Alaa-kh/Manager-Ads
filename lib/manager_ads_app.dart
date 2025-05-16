@@ -1,4 +1,5 @@
 import 'package:manager_ads/app/core/constants/app_packages.dart';
+import 'package:manager_ads/app/modules/splash/splash_screen.dart';
 
 class ManagerAdsApp extends StatelessWidget {
   const ManagerAdsApp({super.key});
@@ -8,8 +9,9 @@ class ManagerAdsApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Inter'),
-      initialRoute: AppRoutes.login,
-      getPages: AppPages.pages,
+      // initialRoute: AppRoutes.login,
+      // getPages: AppPages.pages,
+      home: SplashScreen(),
     );
   }
 }
