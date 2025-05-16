@@ -1,13 +1,13 @@
 import 'dart:async';
-import 'package:flutter_animate/flutter_animate.dart';
+
 import 'package:manager_ads/app/core/constants/app_packages.dart';
 import 'package:manager_ads/app/core/shared/custom_loading.dart';
+import 'package:manager_ads/app/data/helper/failures_handling.dart';
 import 'package:manager_ads/app/data/models/auth/forgot_password_model.dart';
 import 'package:manager_ads/app/data/repo/auth/forgot_password_repo.dart';
-import 'package:manager_ads/app/modules/auth/verify/views/verify_screen.dart';
 
 abstract class ForgotPasswordController extends GetxController {
-  Future<void> forgotPassword();
+  Future<void> forgotPassword(Widget dialog);
 }
 
 class ForgotPasswordControllerImp extends ForgotPasswordController {
@@ -45,109 +45,49 @@ class ForgotPasswordControllerImp extends ForgotPasswordController {
   }
 
   @override
-  Future<void> forgotPassword() async {
+  Future<void> forgotPassword(Widget dialog) async {
     try {
       if (!formKey.currentState!.validate()) return;
 
       Get.closeAllSnackbars();
       showLoadingDialog();
 
-      final forgotPassword = await forgotPasswordRepository.forgotPassword(
+      final result = await forgotPasswordRepository.forgotPassword(
         email: emailController.text.trim(),
       );
-
+      Get.closeAllSnackbars();
       Get.back();
 
-      if (forgotPassword is ForgotPasswordModel) {
-        print('Errors from server: ${forgotPassword.errors}');
-
-        if (forgotPassword.errors != null &&
-            forgotPassword.errors!.isNotEmpty) {
+      if (result is ForgotPasswordModel) {
+        // إذا كان في errors من الباك
+        if (result.errors != null && result.errors!.isNotEmpty) {
           Get.snackbar(
-            'Error!',
-            forgotPassword.errors!.join(", "),
+            'خطأ!',
+            result.errors!.first,
             backgroundColor: Colors.red,
             snackPosition: SnackPosition.BOTTOM,
           );
         } else {
-          startTimer(); // ⏱️ Start countdown timer
+          startTimer();
           Get.dialog(
-            AlertDialog(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(24),
-              ),
-              surfaceTintColor: AppColors.yellowColor,
-              backgroundColor: AppColors.whiteColor,
-              contentPadding: EdgeInsets.zero,
-              content: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20.0,
-                  vertical: 30,
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    SvgPicture.asset(
-                      AppIcons.messageIcon,
-                      width: 44,
-                      height: 44,
-                    ),
-                    const CustomVerticalSizedBox(height: 15),
-                    Text(
-                      'Check your Email',
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    const CustomVerticalSizedBox(height: 10),
-                    Text(
-                      'We have sent password recovery instructions to your email',
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Color(0xff7D848D),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    const CustomVerticalSizedBox(height: 10),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: GestureDetector(
-                        onTap: () => Get.off(() => VerifyScreen()),
-                        child: Container(
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.all(6),
-                          width: 36,
-                          decoration: BoxDecoration(
-                            color: AppColors.primaryColor,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Icon(
-                            Icons.arrow_forward,
-                            color: AppColors.whiteColor,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              actionsAlignment: MainAxisAlignment.center,
-            ).animate().scaleY(
+            dialog.animate().scaleY(
               delay: Duration(microseconds: 100),
               duration: Duration(milliseconds: 800),
             ),
             barrierDismissible: true,
           );
         }
+      } else if (result is Failures) {
+        Get.snackbar(
+          'خطأ!',
+          result.errMessage,
+          backgroundColor: Colors.red,
+          snackPosition: SnackPosition.BOTTOM,
+        );
       } else {
         Get.snackbar(
-          'Error!',
-          'An unexpected error occurred: $forgotPassword',
+          'خطأ!',
+          'Unexpected response: $result',
           backgroundColor: Colors.red,
           snackPosition: SnackPosition.BOTTOM,
         );
@@ -155,8 +95,8 @@ class ForgotPasswordControllerImp extends ForgotPasswordController {
     } catch (e) {
       Get.back();
       Get.snackbar(
-        'Error!',
-        'An exception occurred: $e',
+        'خطأ استثناء!',
+        'حدث استثناء: $e',
         backgroundColor: Colors.red,
         snackPosition: SnackPosition.BOTTOM,
       );

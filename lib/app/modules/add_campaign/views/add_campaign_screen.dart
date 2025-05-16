@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:manager_ads/app/core/constants/app_packages.dart';
 import 'package:manager_ads/app/core/validators/forms_validators.dart';
@@ -65,16 +67,24 @@ class AddCampaignScreen extends StatelessWidget {
                   delay: Duration(microseconds: 1000),
                   duration: Duration(milliseconds: 800),
                 ),
-                // CustomVerticalSizedBox(height: 20),
-                // CustomTextField(
-                //   controller: controller.driversNumberController,
-                //   hintText: 'رقم السائق',
-                //   prefixIcon: Image.asset(AppIcons.numberIcon, width: 20),
-                // ),
+             
                 CustomVerticalSizedBox(height: 20),
                 CustomTextField(
+                  textInputType: TextInputType.number,
                   controller: controller.budgetController,
                   hintText: 'Budget',
+                  prefixIcon: Image.asset(AppIcons.advertiserIcon, width: 20),
+                  validator:
+                      (value) => FormsValidate.getEmptyValidate(context, value),
+                ).animate().slideX(
+                  delay: Duration(microseconds: 1000),
+                  duration: Duration(milliseconds: 900),
+                ),
+                CustomVerticalSizedBox(height: 20),
+                CustomTextField(
+                  textInputType: TextInputType.number,
+                  controller: controller.kmPriceController,
+                  hintText: 'Km price',
                   prefixIcon: Image.asset(AppIcons.advertiserIcon, width: 20),
                   validator:
                       (value) => FormsValidate.getEmptyValidate(context, value),
@@ -89,16 +99,6 @@ class AddCampaignScreen extends StatelessWidget {
                   duration: Duration(milliseconds: 1000),
                 ),
 
-                // CustomTextField(
-                //   controller: controller.regionsController,
-                //   hintText: 'Regions',
-                //   prefixIcon: Image.asset(AppIcons.locationIcon, width: 20),
-                //   validator:
-                //       (value) => FormsValidate.getEmptyValidate(context, value),
-                // ).animate().slideX(
-                //   delay: Duration(microseconds: 1000),
-                //   duration: Duration(milliseconds: 1500),
-                // ),
                 CustomVerticalSizedBox(height: 20),
                 CustomTextField(
                   controller: controller.durationController,
@@ -110,17 +110,7 @@ class AddCampaignScreen extends StatelessWidget {
                   delay: Duration(microseconds: 1000),
                   duration: Duration(milliseconds: 1100),
                 ),
-                // CustomVerticalSizedBox(height: 20),
-                // CustomTextField(
-                //   controller: controller.centersController,
-                //   hintText: 'Centers',
-                //   prefixIcon: Image.asset(AppIcons.centersIcon, width: 20),
-                //   validator:
-                //       (value) => FormsValidate.getEmptyValidate(context, value),
-                // ).animate().slideX(
-                //   delay: Duration(microseconds: 1000),
-                //   duration: Duration(milliseconds: 1900),
-                // ),
+             
                 CustomVerticalSizedBox(height: 20),
                 CustomTextField(
                   controller: controller.driversNumberController,
@@ -133,16 +123,21 @@ class AddCampaignScreen extends StatelessWidget {
                   duration: Duration(milliseconds: 1200),
                 ),
                 CustomVerticalSizedBox(height: 20),
-                CustomTextField(
-                  hintText: 'Image of the campaign',
-                  prefixIcon: Image.asset(AppIcons.imageIcon, width: 20),
-                  validator:
-                      (value) => FormsValidate.getEmptyValidate(context, value),
-                ).animate().slideX(
-                  delay: Duration(microseconds: 1000),
-                  duration: Duration(milliseconds: 1300),
+                GestureDetector(
+                  onTap: () async {
+                    await controller.pickSingleImage();
+                  },
+                  child: CustomTextField(
+                    enabled: false,
+                    hintText: 'Image of the campaign',
+                    prefixIcon: Image.asset(AppIcons.imageIcon, width: 20),
+                
+                  ).animate().slideX(
+                    delay: Duration(microseconds: 1000),
+                    duration: Duration(milliseconds: 1300),
+                  ),
                 ),
-            
+
                 CustomVerticalSizedBox(height: 20),
                 AddCampaignCentersDropdownWidget().animate().slideX(
                   delay: Duration(microseconds: 1000),

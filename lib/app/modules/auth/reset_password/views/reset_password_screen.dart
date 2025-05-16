@@ -1,9 +1,8 @@
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:manager_ads/app/core/constants/app_packages.dart';
-import 'package:manager_ads/app/core/validators/forms_validators.dart';
 import 'package:manager_ads/app/modules/auth/reset_password/controllers/reset_password_controller.dart';
 import 'package:manager_ads/app/widgets/main_app_bar_widget.dart';
 
+String code = Get.arguments['code'];
 
 class ResetPasswordScreen extends StatelessWidget {
   const ResetPasswordScreen({super.key});
@@ -11,34 +10,34 @@ class ResetPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ResetPasswordControllerImp());
-    final String code = Get.arguments['code'];
+    final code = Get.arguments['code'];
 
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
       appBar: mainAppBar(
-        // onTap: () => Get.back(),
+        onTap: () => Get.back(),
         radius: Radius.circular(0),
         backgroundColor: AppColors.whiteColor,
-        // Container(
-        //   margin: EdgeInsets.only(left: 13),
-        //   width: 44,
-        //   height: 44,
-        //   decoration: BoxDecoration(
-        //     shape: BoxShape.circle,
-        //     color: AppColors.lightGrayColor,
-        //     boxShadow: [
-        //       BoxShadow(
-        //         color: AppColors.lightDarkColor.withValues(alpha: 0.7),
-        //         blurRadius: 10,
-        //         spreadRadius: 5,
-        //       ),
-        //     ],
-        //   ),
-        //   child: Padding(
-        //     padding: EdgeInsets.only(left: 5),
-        //     child: Icon(Icons.arrow_back_ios, size: 18),
-        //   ),
-        // ),
+        leadingIcon: Container(
+          margin: EdgeInsets.only(left: 13),
+          width: 44,
+          height: 44,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: AppColors.lightGrayColor,
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.lightDarkColor.withValues(alpha: 0.7),
+                blurRadius: 10,
+                spreadRadius: 5,
+              ),
+            ],
+          ),
+          child: Padding(
+            padding: EdgeInsets.only(left: 5),
+            child: Icon(Icons.arrow_back_ios, size: 18),
+          ),
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24),
@@ -55,7 +54,7 @@ class ResetPasswordScreen extends StatelessWidget {
                       style: AppTextTheme.textTheme.displayMedium!.copyWith(
                         color: AppColors.darkModeColor,
                       ),
-                    ),               
+                    ),
                     CustomVerticalSizedBox(height: 50),
                     CustomTextField(
                       obscureText: !controller.isPasswordVisible,

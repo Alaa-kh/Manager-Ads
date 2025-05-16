@@ -34,3 +34,6 @@ export 'package:manager_ads/app/modules/add_campaign/widgets/add_campaign_appbar
 export 'package:manager_ads/app/modules/add_campaign/views/add_campaign_screen.dart';
 export 'package:manager_ads/app/modules/home/views/home_screen.dart';
 export 'package:manager_ads/app/modules/root/controllers/root_controller.dart';
+export 'package:manager_ads/app/core/validators/forms_validators.dart';
+export 'package:manager_ads/app/modules/auth/login/controllers/login_controller.dart';
+export 'package:flutter_animate/flutter_animate.dart';

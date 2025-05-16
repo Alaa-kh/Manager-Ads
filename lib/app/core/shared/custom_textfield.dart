@@ -9,6 +9,7 @@ class CustomTextField extends StatelessWidget {
     this.hintText,
     this.obscureText,
     this.textInputType,
+    this.enabled,
   });
 
   final Widget? prefixIcon;
@@ -18,10 +19,12 @@ class CustomTextField extends StatelessWidget {
   final bool? obscureText;
   final String? hintText;
   final TextInputType? textInputType;
+  final bool? enabled;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled:enabled?? true,
       keyboardType: textInputType,
       cursorColor: AppColors.darkColor,
       autovalidateMode: AutovalidateMode.onUserInteraction,

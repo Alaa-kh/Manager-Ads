@@ -4,8 +4,9 @@ import 'package:manager_ads/app/data/helper/failures_handling.dart';
 import 'package:manager_ads/app/data/models/add_campaing_model.dart';
 import 'package:manager_ads/app/data/network/crud.dart';
 
-abstract class AddCampaingRepository {
-  Future addCampaing({
+abstract class AddCampaingRepository {}
+class AddCampaingRepositoryImpl extends AddCampaingRepository{
+Future addCampaing({
     required String name,
     required String companyName,
     required String kmPrice,
@@ -18,30 +19,12 @@ abstract class AddCampaingRepository {
     required String regions,
     required String miniMum,
     required String maxiMum,
-    // required List<String> images,
-  });
-}
-
-class AddCampaingRepositoryImpl extends AddCampaingRepository {
-  @override
-  Future addCampaing({
-    required String name,
-    required String companyName,
-    required String kmPrice,
-    required String driversNumber,
-    required String description,
-    required String budget,
-    required String duration,
-    required String centers,
-    required String terms,
-    required String regions,
-    required String miniMum,
-    required String maxiMum,
-    // required List<String> images,
+    required List<String> images, // ✅ عدلنا نوع المتغير إلى List<String>
   }) async {
     return _postData(
       url: AppApi.addAds,
       fromJson: (json) => AddCampaingModel.fromJson(json),
+      photo: images, // ✅ نرسل قائمة الصور
       body: {
         'name': name,
         'description': description,
@@ -53,23 +36,26 @@ class AddCampaingRepositoryImpl extends AddCampaingRepository {
         'duration': duration,
         'regions': regions,
         'centers': centers,
-        // 'images': jsonEncode(images),
+        'km_min': miniMum,
+        'km_max': maxiMum,
       },
     );
   }
-
   /// Generic method to post data to the API and handle errors.
-  Future _postData({
+  
+Future _postData({
     required String url,
     required Function fromJson,
     required Map<String, String> body,
+    required List<String> photo, // ✅ نوعه List<String>
   }) async {
-    try {
-      final result = await Crud().post(url: url, body: body);
-      return result.fold((failure) => failure, (data) => fromJson(data));
-    } catch (e) {
-      print('Exception in _postData:::::::::::::::; $e');
-      return Failures(errMessage: 'An error occurred');
-    }
+    final result = await Crud().post(
+      url: url,
+      body: body,
+      isFormData: true,
+      photo: photo,
+      keyPhoto: 'images[]',
+    );
+    return result.fold((failure) => failure, (data) => fromJson(data));
   }
 }

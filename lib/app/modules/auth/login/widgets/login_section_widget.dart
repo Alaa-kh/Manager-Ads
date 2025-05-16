@@ -1,14 +1,11 @@
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:manager_ads/app/core/constants/app_packages.dart';
-import 'package:manager_ads/app/core/validators/forms_validators.dart';
-import 'package:manager_ads/app/modules/auth/login/controllers/login_controller.dart';
 
 class LoginSectionWidget extends StatelessWidget {
   const LoginSectionWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
- Get.put(LoginControllerImp());
+    Get.put(LoginControllerImp());
     return Expanded(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -30,7 +27,7 @@ class LoginSectionWidget extends StatelessWidget {
                       const CustomVerticalSizedBox(height: 30),
                       LoginTextWidget(),
                       const CustomVerticalSizedBox(height: 25),
-                    CustomTextField(
+                      CustomTextField(
                         prefixIcon: SvgPicture.asset(AppIcons.nameIcon),
                         hintText: 'Full Name',
                         controller: controller.nameController,
@@ -42,7 +39,6 @@ class LoginSectionWidget extends StatelessWidget {
                         duration: Duration(milliseconds: 500),
                       ),
                       const CustomVerticalSizedBox(height: 18),
-
                       CustomTextField(
                         obscureText: !controller.isPasswordVisible,
                         prefixIcon: SvgPicture.asset(AppIcons.passwordIcon),
@@ -54,7 +50,7 @@ class LoginSectionWidget extends StatelessWidget {
                               password,
                             ),
                         suffixIcon: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.symmetric(horizontal:  8.0),
                           child: InkWell(
                             onTap: () => controller.togglePasswordVisibility(),
                             child: SvgPicture.asset(

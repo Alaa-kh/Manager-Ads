@@ -1,4 +1,3 @@
-
 import 'package:manager_ads/app/core/constants/app_packages.dart';
 import 'package:manager_ads/app/core/shared/custom_loading.dart';
 import 'package:manager_ads/app/data/repo/auth/reset_password_repo.dart';
@@ -6,7 +5,6 @@ import 'package:manager_ads/app/data/repo/auth/reset_password_repo.dart';
 abstract class ResetPasswordController extends GetxController {
   Future<void> resetPassword(String codee);
 }
-
 
 class ResetPasswordControllerImp extends ResetPasswordController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -33,7 +31,7 @@ class ResetPasswordControllerImp extends ResetPasswordController {
   Future<void> resetPassword(String codee) async {
     if (!formKey.currentState!.validate()) return;
 
-    showLoadingDialog(); 
+    showLoadingDialog();
 
     final result = await resetPasswordRepository.resetPassword(
       password: passwordController.text.trim(),
@@ -67,10 +65,13 @@ class ResetPasswordControllerImp extends ResetPasswordController {
             backgroundColor: Colors.green,
             snackPosition: SnackPosition.BOTTOM,
           );
-          Get.off(() => LoginScreen());
+          Get.off(
+            () => LoginScreen(),
+            transition: Transition.rightToLeft,
+            duration: Duration(seconds: 1),
+          );
         }
       },
     );
   }
-
 }

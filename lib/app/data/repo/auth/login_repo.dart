@@ -27,15 +27,25 @@ class LoginRepositoryImpl extends LoginRepository {
     );
   }
 
-  /// Generic method to post data to the API and handle errors.
-  Future _postData({
+   Future _postData({
     required String url,
     required Function fromJson,
     required Map<String, String> body,
   }) async {
     try {
       final result = await Crud().post(url: url, body: body);
-      return result.fold((failure) => failure, (data) => fromJson(data));
+      return result.fold((failure) => failure, (data) {
+        if (data.containsKey('message') && !(data.containsKey('data'))) {
+          // هذا معناه فشل من السيرفر برسالة واضحة
+          return Failures(errMessage: data['message']);
+        } else if (data.containsKey('message') &&
+            (data.containsKey('data') && data['data']['role'] != 'ادمن')) {
+          return Failures(
+            errMessage: 'لا يمكنك تسجيل الدخول هذا الحساب غير صالح',
+          );
+        }
+        return fromJson(data);
+      });
     } catch (e) {
       print('Exception in _postData:::::::::::::::; $e');
       return Failures(errMessage: 'An error occurred');

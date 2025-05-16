@@ -47,13 +47,13 @@ class HomeGridInfoWidget extends StatelessWidget {
                               ? 'Number of companies'
                               : 'Number of campaigns',
                           style: AppTextTheme.textTheme.displayMedium!.copyWith(
-                            fontSize: 12,
+                            fontSize: 10,
                           ),
                         ),
                         Text(
                           '40,689',
                           style: AppTextTheme.textTheme.bodyLarge!.copyWith(
-                            fontSize: 18,
+                            fontSize: 13,
                           ),
                         ),
                       ],
@@ -66,6 +66,8 @@ class HomeGridInfoWidget extends StatelessWidget {
                           : index == 2
                           ? AppIcons.companiesIcon
                           : AppIcons.campaignsIcon,
+width: 33,
+                        
                     ),
                   ],
                 ),
@@ -79,7 +81,7 @@ class HomeGridInfoWidget extends StatelessWidget {
                           TextSpan(
                             text: '1.3% ',
                             style: AppTextTheme.textTheme.labelLarge!.copyWith(
-                              fontSize: 10,
+                              fontSize: 9,
                               color: AppColors.greenColor,
                               fontWeight: FontWeight.w600,
                             ),
@@ -87,7 +89,7 @@ class HomeGridInfoWidget extends StatelessWidget {
                           TextSpan(
                             text: 'Higher than last week ',
                             style: AppTextTheme.textTheme.labelLarge!.copyWith(
-                              fontSize: 10,
+                              fontSize: 9,
                               color: AppColors.blackColor,
                             ),
                           ),
