@@ -11,7 +11,7 @@ class ManagerAdsApp extends StatelessWidget {
       theme: ThemeData(fontFamily: 'Inter'),
       // initialRoute: AppRoutes.login,
       // getPages: AppPages.pages,
-      home: LoginScreen(),
+      home: SplashScreen(),
     );
   }
 }
