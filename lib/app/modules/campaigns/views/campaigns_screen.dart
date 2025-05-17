@@ -1,4 +1,5 @@
 import 'package:manager_ads/app/core/constants/app_packages.dart';
+import 'package:manager_ads/app/modules/add_campaign/controllers/add_campaing_controller.dart';
 
 class CampaignsScreen extends StatelessWidget {
   const CampaignsScreen({super.key});
@@ -24,9 +25,12 @@ class CampaignsScreen extends StatelessWidget {
         ),
         floatingActionButton: GestureDetector(
      onTap: () {
+                  Get.delete<AddCampaingControllerImp>(); // حذف الكونترولر أولاً
+
             Navigator.of(context).push(
               MaterialPageRoute(builder: (_) => const AddCampaignScreen()),
             );
+
           },
           child: SvgPicture.asset(AppIcons.addIcon),
         ),

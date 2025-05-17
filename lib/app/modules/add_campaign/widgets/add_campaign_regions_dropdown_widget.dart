@@ -1,7 +1,7 @@
 import 'package:manager_ads/app/core/constants/app_packages.dart';
 import 'package:manager_ads/app/modules/add_campaign/controllers/add_campaing_controller.dart';
 
-List<String> regions = ['دمشق', 'حلب', 'حمص'];
+List<String> regions = ['دمشق', 'القاهرة'];
 
 class AddCampaignRegionsDropdownWidget extends StatelessWidget {
   const AddCampaignRegionsDropdownWidget({super.key});

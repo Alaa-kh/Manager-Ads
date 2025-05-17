@@ -9,7 +9,11 @@ import 'package:permission_handler/permission_handler.dart';
 
 abstract class AddCampaingController extends GetxController {
   Future<void> addCampaing();
+  Future<void> pickSingleImage();
 }
+
+
+
 class AddCampaingControllerImp extends AddCampaingController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -29,7 +33,8 @@ class AddCampaingControllerImp extends AddCampaingController {
   AddCampaingRepositoryImpl addCampaingRepository = AddCampaingRepositoryImpl();
   AddCampaingModel? addCampaingModel;
 
-  List<String> images = []; // ← تعديل: دعم أكثر من صورة
+  List<String> images = [];
+
   @override
   Future<void> addCampaing() async {
     if (!formKey.currentState!.validate()) return;
@@ -43,7 +48,7 @@ class AddCampaingControllerImp extends AddCampaingController {
       terms: termsController.text.trim(),
       driversNumber: driversNumberController.text.trim(),
       budget: budgetController.text.trim(),
-      images: images, // ✅ ممرر كـ List<String>
+      images: images,
       kmPrice: kmPriceController.text.trim(),
       companyName: companyNameController.text.trim(),
       duration: durationController.text.trim(),
@@ -53,9 +58,9 @@ class AddCampaingControllerImp extends AddCampaingController {
       regions: regionsController.text.trim(),
     );
 
+    Get.back(); // Close loading
+
     if (addCampaing is AddCampaingModel) {
-      Get.back(); // ✅ إغلاق اللودينغ
-      print('SUCCESS Add Campaing');
       Get.snackbar(
         'تمت العملية بنجاح',
         'تمت إضافة الحملة بنجاح',
@@ -63,7 +68,6 @@ class AddCampaingControllerImp extends AddCampaingController {
         snackPosition: SnackPosition.BOTTOM,
       );
     } else if (addCampaing is Failures) {
-      Get.back(); // إغلاق اللودينغ أيضًا في حالة الخطأ
       Get.snackbar(
         'خطأ!',
         addCampaing.errMessage,
@@ -74,17 +78,12 @@ class AddCampaingControllerImp extends AddCampaingController {
     }
   }
 
-  void select(String value, TextEditingController textEditingController) {
-    textEditingController.text = value;
-    update();
-  }
-
   Future<void> pickSingleImage() async {
     final picker = ImagePicker();
     PermissionStatus status;
 
     if (Platform.isAndroid) {
-      status = await Permission.photos.request(); // Android 13+
+      status = await Permission.photos.request();
       if (status.isDenied) {
         status = await Permission.storage.request();
       }
@@ -97,17 +96,42 @@ class AddCampaingControllerImp extends AddCampaingController {
     if (status.isGranted) {
       final pickedFile = await picker.pickImage(source: ImageSource.gallery);
       if (pickedFile != null) {
-        images.add(pickedFile.path); // ← إضافة الصورة للقائمة
-        update(); // ← تحديث الواجهة لو كنت تعرض الصور
-        print("تمت إضافة صورة: ${pickedFile.path}");
+        images.add(pickedFile.path);
+        update();
+        print("تم اختيار صورة: ${pickedFile.path}");
       } else {
         print('لم يتم اختيار صورة');
       }
     } else if (status.isPermanentlyDenied) {
-      print('الإذن مرفوض دائمًا، افتح الإعدادات يدويًا');
       openAppSettings();
     } else {
       print('تم رفض الإذن');
     }
+  }
+
+  void clearForm() {
+    nameController.clear();
+    companyNameController.clear();
+    descriptionController.clear();
+    termsController.clear();
+    budgetController.clear();
+    kmPriceController.clear();
+    durationController.clear();
+    driversNumberController.clear();
+    miniMumController.clear();
+    maxiMumController.clear();
+    centersController.clear();
+    regionsController.clear();
+    images = [];
+    update();
+  }
+  @override
+  void onInit() {
+    super.onInit();
+    clearForm(); // ✅ يتم التفريغ عند كل دخول
+  }
+  void select(String value, TextEditingController controller) {
+    controller.text = value;
+    update();
   }
 }
